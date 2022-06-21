@@ -1,7 +1,7 @@
 module WeatherHelper
 
   def self.temp_hash
-    api_key = Rails.application.credentials.accuweather.dig(:api_key)
+    api_key = ENV['api_key']
     TemperatureGetter.(key: api_key)
   end
 
