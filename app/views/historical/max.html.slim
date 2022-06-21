@@ -1,12 +1,11 @@
-h3
-  .center
-    | Historical Max Conditions (past 24 hours)
+h1
+  | Historical Max Conditions (past 24 hours)
 p
   h2
-    .center
-      = @city
+    = @city
 p
   h1
-    .center
-      = @max
-      |  °C
+    = @max
+    |  °C
+
+= link_to "Back", :back, class: 'btn btn-secondary'

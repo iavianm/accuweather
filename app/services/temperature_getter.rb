@@ -1,13 +1,13 @@
 class TemperatureGetter
   class << self
-    def call(key:, city:)
-      new(key, city).call
+    def call(key:)
+      new(key).call
     end
   end
   
   def call
     temp_hours_hash = {}
-    response = HTTParty.get(ACCUWEATHER_API_URL + CONDITIONS + "#{@city_key}" + '/historical/24?',query: accu_weather_params, format: :json).parsed_response
+    response ||= HTTParty.get(ACCUWEATHER_API_URL + CONDITIONS + CITI + '/historical/24?',query: accuweather_params, format: :json).parsed_response
     response.each do |hour|
       temp_hours_hash[hour["EpochTime"]] = hour['Temperature']['Metric']['Value']
     end
@@ -16,17 +16,17 @@ class TemperatureGetter
 
   private
 
-  attr_reader :api_key, :city_key
+  attr_reader :api_key
 
   ACCUWEATHER_API_URL = 'http://dataservice.accuweather.com/'.freeze
   CONDITIONS = 'currentconditions/v1/'.freeze
+  CITI = '294021'.freeze
 
-  def initialize(api_key, city)
+  def initialize(api_key)
     @api_key = api_key
-    @city_key = city
   end
  
-  def accu_weather_params
+  def accuweather_params
     {
       apikey: @api_key,
       metric: true,

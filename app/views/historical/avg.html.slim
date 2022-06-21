@@ -1,12 +1,11 @@
-h3
-  .center
-    | Historical AVG Conditions (past 24 hours)
+h1
+  | Historical AVG Conditions (past 24 hours)
 p
   h2
-    .center
-      = @city
+    | Moscow
 p
   h1
-    .center
-      = @avg
-      |  °C
+    = @avg
+    |  °C
+
+= link_to "Back", :back, class: 'btn btn-secondary'

@@ -1,32 +1,25 @@
 class HistoricalController < ApplicationController
-  # before_action :get_weather, :get_city, :weather_nil
+  before_action :weather_nil
+
   def index
   end
 
   def min
-    @min = WeatherHelper.min(@weather)
+    @min = WeatherHelper.min
   end
 
   def max
-    @max = WeatherHelper.max(@weather)
+    @max = WeatherHelper.max
   end
 
   def avg
-    @avg = WeatherHelper.avg(@weather)
+    @avg = WeatherHelper.avg
   end
 
   private
 
-  def get_weather
-    @weather = City.last.weather
-  end
-
-  def get_city
-    @city = City.last.name
-  end
-
   def weather_nil
-    if @weather.nil?
+    if WeatherHelper.temp_hash.nil?
       render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
   end

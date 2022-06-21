@@ -1,0 +1,11 @@
+h1
+  | Current Conditions
+p
+  h2
+    | Moscow
+p
+  h1
+    = WeatherHelper.temp_hash.values.first
+    |  °C
+
+= link_to "Back", :back, class: 'btn btn-secondary'

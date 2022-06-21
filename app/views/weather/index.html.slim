@@ -1,5 +1,39 @@
-h1
-  | Weather#index
-p
-  | Find me in app/views/weather/index.html.erb
-= @temp
+- if notice.present?
+  .buffer-top.alert.alert-success.alert-dismissible[role="alert"]
+    button.btn-close[type="button" data-bs-dismiss="alert" aria-label="Close"]
+    p#notice
+      = notice
+
+h1.center
+  .row
+    .row
+      .col
+        | Weather forecast (Accuweather)
+      .col-3
+        | Status
+
+br
+.row
+  .col-8
+    .row.col-9
+      = link_to "Current Conditions", current_weather_index_path, class: 'btn btn-success'
+      p
+      = link_to "Historical Current Conditions (past 24 hours)", historical_index_path, class: 'btn btn-success'
+      p
+      = link_to "Historical Max Conditions (past 24 hours)", max_historical_index_path, class: 'btn btn-success'
+      p
+      = link_to "Historical Min Conditions (past 24 hours)", min_historical_index_path, class: 'btn btn-success'
+      p
+      = link_to "Historical AVG Conditions (past 24 hours)", avg_historical_index_path, class: 'btn btn-success'
+      p
+  .col-4
+    .row
+      = link_to "Status", health_index_path, class: 'btn btn-success'
+= form_with url: "/weather/by_time", method: :get do |f|
+  .row
+    .col-6
+      .row
+        .col-8
+          = f.number_field :timestamp, class: 'form-control', placeholder: 'enter timestamp ... 1621823790'
+        .col-3
+          = f.submit 'Conditions by time', class: 'btn btn-primary btn-small'

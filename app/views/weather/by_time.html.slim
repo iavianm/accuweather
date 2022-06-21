@@ -1,14 +1,11 @@
-h1.center
-  | Weather forecast (Accuweather)
-/ p
-/   .row
-/     .col-md-3
-/       = form_with url: "/weather/by_time", method: :get do |f|
-/         p = f.number_field :timestamp, class: 'form-control', placeholder: 'enter the name of the city... Moscow'
-/         p = f.submit 'Get a forecast', class: 'btn btn-primary btn-small'
+h1
+  | Conditions by time
+p
+  h2
+    | Moscow
+p
+  h1
+    = @timestamps
+    |  °C
 
-
-= bootstrap_form_with url: "/weather/by_time", method: :get do |f|
-  = f.number_field :timestamp
-  = f.submit
-= @search_time
+= link_to "Back", :back, class: 'btn btn-secondary'

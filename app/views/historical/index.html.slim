@@ -1,10 +1,8 @@
 h1
-  .center
-    | Historical Current Conditions (past 24 hours)
+  | Historical Current Conditions (past 24 hours)
 p
   h2
-    .center
-      = @city
+    | Moscow
 
 table.table
   thead
@@ -16,7 +14,7 @@ table.table
       th[scope="col"]
         | Temperature
   tbody
-    - @weather.each_with_index do |hour, i|
+    - WeatherHelper::CASH.each_with_index do |hour, i|
       tr
         th[scope="row"]
           = i += 1
@@ -25,3 +23,5 @@ table.table
         td
           = hour[1]
           |  °C
+
+= link_to "Back", :back, class: 'btn btn-secondary'

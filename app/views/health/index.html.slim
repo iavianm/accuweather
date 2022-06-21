@@ -1,2 +1,19 @@
-h1 Health#index
-p Find me in app/views/health/index.html.slim
+h1 Health connection
+
+.row
+  .col-4
+    -if @health == 'OK'
+      h1
+        | Status
+        '
+        span.badge.bg-success
+          | OK
+    -else
+      h1
+        | Status
+        '
+        span.badge.bg-danger
+          | FAIL
+br
+p
+  = link_to "Back", :back, class: 'btn btn-secondary'

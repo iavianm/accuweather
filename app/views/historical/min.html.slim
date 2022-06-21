@@ -1,12 +1,11 @@
-h3
-  .center
-    | Historical Min Conditions (past 24 hours)
+h1
+  | Historical Min Conditions (past 24 hours)
 p
   h2
-    .center
-      = @city
+    | Moscow
 p
   h1
-    .center
-      = @min
-      |  °C
+    = @min
+    |  °C
+
+= link_to "Back", :back, class: 'btn btn-secondary'
