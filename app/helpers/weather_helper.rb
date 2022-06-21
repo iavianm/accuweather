@@ -1,7 +1,7 @@
 module WeatherHelper
 
   def self.temp_hash
-    api_key = ENV['api_key']
+    api_key = ENV['API_KEY']
     TemperatureGetter.(key: api_key)
   end
 
