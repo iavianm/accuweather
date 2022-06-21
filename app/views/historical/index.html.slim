@@ -1,0 +1,27 @@
+h1
+  .center
+    | Historical Current Conditions (past 24 hours)
+p
+  h2
+    .center
+      = @city
+
+table.table
+  thead
+    tr
+      th[scope="col"]
+        | #
+      th[scope="col"]
+        | Time
+      th[scope="col"]
+        | Temperature
+  tbody
+    - @weather.each_with_index do |hour, i|
+      tr
+        th[scope="row"]
+          = i += 1
+        td
+          = Time.at(hour[0].to_i).strftime("%d/%m/%Y %k:%M")
+        td
+          = hour[1]
+          |  °C
