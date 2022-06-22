@@ -1,11 +1,7 @@
 module WeatherHelper
 
-  def self.temp_hash
-    api_key = ENV['API_KEY']
-    TemperatureGetter.(key: api_key)
-  end
-
-  CASH ||= temp_hash
+  api_key = ENV['API_KEY']
+  CASH ||= TemperatureGetter.(key: api_key)
 
   def self.max(temp = CASH)
     # binding.pry
