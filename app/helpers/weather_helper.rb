@@ -37,7 +37,7 @@ module WeatherHelper
     temp.each_value do |num|
       avg << num
     end
-    avg.inject(0.0) { |sum, el| sum + el } / avg.size
+    (avg.inject(0.0) { |sum, el| sum + el } / avg.size).ceil(1)
   end
 
   def by_time_temp(time, hash = CASH)
