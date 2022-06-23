@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby 3.0.4
+* Rails 6.1.5.1
 
-Things you may want to cover:
 
-* Ruby version
+`bundle`
 
-* System dependencies
+add .env to the root directory
 
-* Configuration
+add in .env your api_key [accuweather](https://developer.accuweather.com/) (API_KEY: *******************)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`bundle exec rails s`
