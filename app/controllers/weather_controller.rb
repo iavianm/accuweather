@@ -21,7 +21,7 @@ class WeatherController < ApplicationController
 
   def weather_nil
     if WeatherHelper::CASH.nil?
-      render :file => "#{Rails.root}/public/404.html",  :status => 404
+      redirect_to health_index_url
     end
   end
 end

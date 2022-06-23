@@ -4,7 +4,8 @@ class TemperatureGetter
       new(key).call
     end
   end
-  
+
+  begin
   def call
     temp_hours_hash = {}
     response ||= HTTParty.get(ACCUWEATHER_API_URL + CONDITIONS + CITI + '/historical/24?',query: accuweather_params, format: :json).parsed_response
@@ -13,7 +14,11 @@ class TemperatureGetter
     end
     temp_hours_hash
   end
-
+  rescue TypeError => e
+    e.class
+  rescue SocketError => e
+    e.class
+  end
   private
 
   attr_reader :api_key

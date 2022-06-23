@@ -6,11 +6,11 @@ RSpec.describe HealthHelper, type: :helper do
     let(:uri) { URI('https://www.google.com') }
     let(:uri_bad) { URI('https://www.google.co') }
 
-    it "returns OK" do
+    it "return OK" do
       expect(helper.status(uri)).to eq('OK')
     end
 
-    it "returns FAIL" do
+    it "return FAIL" do
       expect(helper.status(uri_bad)).to eq('FAIL')
     end
   end

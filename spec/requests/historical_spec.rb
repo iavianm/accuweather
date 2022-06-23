@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Historical", type: :request do
-  describe "#Response success" do
+  describe "Response success" do
     it "GET /weather/historical" do
       get "/weather/historical"
       expect(response).to have_http_status(:success)

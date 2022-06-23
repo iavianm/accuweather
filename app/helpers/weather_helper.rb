@@ -1,6 +1,11 @@
 module WeatherHelper
   api_key = ENV['API_KEY']
+
+  begin
   CASH ||= TemperatureGetter.(key: api_key)
+  rescue SocketError
+    CASH ||= nil
+  end
 
   def current_temp(temp = CASH)
     temp.values.first
@@ -28,13 +33,11 @@ module WeatherHelper
   end
 
   def avg_temp(temp = CASH)
-    avg = 0
-    count = 0
+    avg = []
     temp.each_value do |num|
-      avg += num
-      count += 1
+      avg << num
     end
-    (avg / count).ceil(1)
+    avg.inject(0.0) { |sum, el| sum + el } / avg.size
   end
 
   def by_time_temp(time, hash = CASH)

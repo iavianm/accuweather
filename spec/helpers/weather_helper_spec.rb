@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe WeatherHelper, type: :helper do
-  describe "#Get weather" do
+  describe "Get weather" do
     let(:temp) { {'a'=>3, 'b'=>5, 'c'=>7, 'd'=>1} }
     it "return Current temp" do
       expect(helper.current_temp(temp)).to eq(3)
