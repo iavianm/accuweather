@@ -1,19 +1,20 @@
 class HistoricalController < ApplicationController
+  include WeatherHelper
   before_action :weather_nil
 
   def index
   end
 
   def min
-    @min = WeatherHelper.min
+    @min = min_temp
   end
 
   def max
-    @max = WeatherHelper.max
+    @max = max_temp
   end
 
   def avg
-    @avg = WeatherHelper.avg
+    @avg = avg_temp
   end
 
   private

@@ -5,7 +5,7 @@ p
     | Moscow
 p
   h1
-    = WeatherHelper::CASH.values.first
+    = @current
     |  °C
 
 = link_to "Back", :back, class: 'btn btn-secondary'

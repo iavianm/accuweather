@@ -1,14 +1,16 @@
 class WeatherController < ApplicationController
+  include WeatherHelper
   before_action :weather_nil, except: :index
 
   def index
   end
 
   def current
+    @current = current_temp
   end
 
   def by_time
-    @timestamps = WeatherHelper.by_time(params[:timestamp])
+    @timestamps = by_time_temp(params[:timestamp])
     # binding.pry
     if @timestamps.nil?
       render :file => "#{Rails.root}/public/404.html",  :status => 404

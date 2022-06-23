@@ -1,13 +1,13 @@
 module WeatherHelper
-
   api_key = ENV['API_KEY']
   CASH ||= TemperatureGetter.(key: api_key)
 
-  def self.max(temp = CASH)
+  def current_temp(temp = CASH)
+    temp.values.first
+  end
+
+  def max_temp(temp = CASH)
     # binding.pry
-    if temp.nil?
-      return temp
-    end
     max = temp.values.first
     temp.each_value do |num|
       if max < num
@@ -17,10 +17,7 @@ module WeatherHelper
     max
   end
 
-  def self.min(temp = CASH)
-    if temp.nil?
-      return temp
-    end
+  def min_temp(temp = CASH)
     min = temp.values.first
     temp.each_value do |num|
       if min > num
@@ -30,10 +27,7 @@ module WeatherHelper
     min
   end
 
-  def self.avg(temp = CASH)
-    if temp.nil?
-      return temp
-    end
+  def avg_temp(temp = CASH)
     avg = 0
     count = 0
     temp.each_value do |num|
@@ -43,7 +37,7 @@ module WeatherHelper
     (avg / count).ceil(1)
   end
 
-  def self.by_time(time = 1, hash = CASH)
+  def by_time_temp(time, hash = CASH)
     keys = []
     hash.each_key do |key|
       keys << key.to_s.to_i

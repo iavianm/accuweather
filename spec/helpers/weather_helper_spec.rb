@@ -1,15 +1,19 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the WeatherHelper. For example:
-#
-# describe WeatherHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe WeatherHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#Get weather" do
+    let(:temp) { {'a'=>3, 'b'=>5, 'c'=>7, 'd'=>1} }
+    it "return Current temp" do
+      expect(helper.current_temp(temp)).to eq(3)
+    end
+    it "return MAX temp" do
+      expect(helper.max_temp(temp)).to eq(7)
+    end
+    it "return MIN temp" do
+      expect(helper.min_temp(temp)).to eq(1)
+    end
+    it "return AVG temp" do
+      expect(helper.avg_temp(temp)).to eq(4)
+    end
+  end
 end

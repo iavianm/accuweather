@@ -1,5 +1,6 @@
 class HealthController < ApplicationController
+  include HealthHelper
   def index
-    @health = HealthHelper.setup
+    @health = status
   end
 end

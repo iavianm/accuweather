@@ -1,15 +1,18 @@
 require 'rails_helper'
+require 'net/http'
 
-# Specs in this file have access to a helper object that includes
-# the HealthHelper. For example:
-#
-# describe HealthHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe HealthHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#Health connection" do
+    let(:uri) { URI('https://www.google.com') }
+    let(:uri_bad) { URI('https://www.google.co') }
+
+    it "returns OK" do
+      expect(helper.status(uri)).to eq('OK')
+    end
+
+    it "returns FAIL" do
+      expect(helper.status(uri_bad)).to eq('FAIL')
+    end
+  end
 end
+

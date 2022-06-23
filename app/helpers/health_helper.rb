@@ -1,15 +1,15 @@
 module HealthHelper
   require 'net/http'
   # pry
-  def self.setup
-    uri = URI('https://www.google.com')
-    res = Net::HTTP.get_response(uri)
+  @@uri = URI(TemperatureGetter::ACCUWEATHER_API_URL + TemperatureGetter::CONDITIONS + TemperatureGetter::CITI + '/historical/24?' + "apikey= #{ENV['API_KEY']}")
 
+  def status(uri = @@uri)
+    res = Net::HTTP.get_response(uri)
     # Status
     if res.code == '200'
-      return 'OK'
+      'OK'
     else
-      return 'FAIL'
+      'FAIL'
     end
   end
 end
